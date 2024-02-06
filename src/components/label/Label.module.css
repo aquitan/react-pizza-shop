@@ -1,0 +1,7 @@
+.label {
+	font-size: 17px;
+	color: var(--medium-grey);
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}

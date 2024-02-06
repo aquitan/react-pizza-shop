@@ -1,0 +1,28 @@
+.input {
+	border-radius: 10px;
+	border: 1px solid #EEE;
+	background: #FFF;
+	box-shadow: 15px 20px 45px 0px rgba(233, 233, 233, 0.25);
+	padding: 22px 20px;
+	max-width: 324px;
+	width: 100%;
+}
+
+.input::placeholder {
+	color: var(--medium-grey);
+	font-size: 17px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.label {
+	display: flex;
+	flex-direction: column;
+	color: var(--label-color);
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	gap: 6px;
+}

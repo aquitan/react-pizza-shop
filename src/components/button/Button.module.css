@@ -1,0 +1,42 @@
+.button {
+	border-radius: 6px;
+	background-color: var(--btn-color);
+	border: none;
+	padding: 8px 30px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: var(--trs);
+	max-width: fit-content;
+	max-width: 248px;
+	width: 100%;
+	height: 60px;
+	text-align: center;
+	text-transform: uppercase;
+	color: #fff;
+	border-radius: 28px;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	align-items: center;
+	box-shadow: 0 10px 40px 0 rgba(122, 129, 190, 0.16);
+}
+
+.button:hover {
+	background-color: var(--btn-hover);
+	box-shadow: none;
+}
+
+.small {
+	padding: 10px 25px;
+	height: 44px;
+	max-width: 141px;
+	text-transform: none;
+}
+
+.exit {
+	padding: 9px;
+	height: 44px;
+	max-width: 117px;
+	text-transform: none;
+	justify-content: flex-start;
+}

@@ -1,0 +1,11 @@
+.layout {
+	display: flex;
+	gap: 64px;
+	height: 100vh;
+}
+
+.content {
+	margin-top: 39px;
+	margin-right: 60px;
+	width: 100%;
+}

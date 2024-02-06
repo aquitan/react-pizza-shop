@@ -1,0 +1,10 @@
+.h1 {
+	font-weight: 600;
+	font-size: 36px;
+	color: var(--black);
+}
+
+.h2 {
+	font-weight: 600;
+	font-size: 18px;
+}

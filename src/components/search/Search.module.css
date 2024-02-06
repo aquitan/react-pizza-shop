@@ -1,0 +1,21 @@
+.wrap {
+	height: fit-content;
+	position: relative;
+}
+
+.input {
+	border: 1px solid #efefef;
+	border-radius: 10px;
+	width: 256px;
+	height: 51px;
+	display: flex;
+	align-items: center;
+	padding: 18px 18px 18px 30px;
+}
+
+.img {
+	position: absolute;
+	z-index: 1;
+	top: 18px;
+	left: 10px;
+}
