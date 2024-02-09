@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
-export type HeaderProps = {
+export type HeaderProps = HTMLAttributes<HTMLHeadingElement> & {
 	children: ReactNode
 }
