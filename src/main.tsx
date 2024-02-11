@@ -27,7 +27,7 @@ const router = createBrowserRouter([
 				path: '/product/:id',
 				element: <CardDetail />,
 				loader: async ({ params }) => {
-					const data = await axios.get(`${PREFIX}/products/${params.id}`);
+					const { data } = await axios.get(`${PREFIX}/products/${params.id}`);
 					return data;
 				}
 			}
