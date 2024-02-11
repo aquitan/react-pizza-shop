@@ -1,7 +1,8 @@
 export type CardProps = {
 	price: number,
-	rate: number,
-	img: string,
-	title: string,
-	description: string
+	rating: number,
+	image: string,
+	name: string,
+	ingredients: string[]
+	id: number | string
 }

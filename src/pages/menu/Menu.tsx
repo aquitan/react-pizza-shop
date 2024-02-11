@@ -1,16 +1,40 @@
-import Card from '../../components/card/Card';
+import { useEffect, useState } from 'react';
 import HTag from '../../components/hTag/HTag';
 import Header from '../../components/header/Header';
 import Search from '../../components/search/Search';
 import styles  from './Menu.module.css';
+import { Product } from '../../types/product.type';
+import { PREFIX } from '../../api/API';
+import axios, { AxiosError } from 'axios';
+import MenuList from './menuList/MenuList';
 
-const menu = [
-	{ price: 300, rate: 4.5, img: 'pizza-1.png', title: 'Наслаждение', description: 'Салями, руккола, помидоры, оливки' },
-	{ price: 250, rate: 4.5, img: 'takos.png', title: 'Такос', description: 'Острый перец, лепёшка, фарш' }
-];
 
 
 const Menu = () => {
+	const [products, setProducts] = useState<Product[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [error, setError] = useState<string | undefined>();
+
+	const getData = async () => {
+		try {
+			setIsLoading(true);
+			const { data } = await axios.get<Product[]>(`${PREFIX}/products`);
+			setProducts(data);
+			setIsLoading(false);
+		} catch (e) {
+			if (e instanceof AxiosError) {
+				setError(e.message);
+			}
+			setIsLoading(false);
+			return;
+		}
+	};
+
+	useEffect(() => {
+		getData();
+	}, []);
+
+
 	return(
 		<div className={styles.menu}>
 			<Header>
@@ -20,11 +44,14 @@ const Menu = () => {
 			
 			<div className={styles.products}>
 				{
-					menu.map(product => (
-						<Card {...product} />
-					))
+					error && <>{error}</>
 				}
-
+				{
+					!isLoading && <MenuList products={products} />
+				}
+				{
+					isLoading && <>Загружаем продукты...</>
+				}
 
 			</div>
 		</div>

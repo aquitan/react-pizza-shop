@@ -6,6 +6,9 @@ import Menu from './pages/menu/Menu';
 import Cart from './pages/cart/Cart';
 import Layout from './layout/Layout';
 import Error from './pages/error/Error';
+import CardDetail from './pages/cardDetail/CardDetail';
+import { PREFIX } from './api/API';
+import axios from 'axios';
 
 const router = createBrowserRouter([
 	{
@@ -19,7 +22,16 @@ const router = createBrowserRouter([
 			{
 				path: '/cart',
 				element: <Cart />
+			},
+			{
+				path: '/product/:id',
+				element: <CardDetail />,
+				loader: async ({ params }) => {
+					const data = await axios.get(`${PREFIX}/products/${params.id}`);
+					return data;
+				}
 			}
+
 		]
 	},
 	{

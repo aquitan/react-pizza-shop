@@ -1,26 +1,34 @@
+import { Link } from 'react-router-dom';
+import Button from '../button/Button';
 import HTag from '../hTag/HTag';
 import styles from './Card.module.css';
 import { CardProps } from './Card.props';
 
-const Card = ({ price, rate, img, title, description }: CardProps) => {
+const Card = ({ id, price, rating, image, name, ingredients }: CardProps) => {
+
 	return (
-		<div className={styles.card}>
+		<Link to={`/product/${id}`} className={styles.card}>
 			<div className={styles['card-top']}>
-				<img className={styles.img} src={`/${img}`} alt="" />
+				<div className={styles.buy}>
+					<Button appearance='round'>
+						<img src="/card-buy-icon.svg" alt="Иконка покупки" />
+					</Button>
+				</div>
+				<img className={styles.image} src={`${image}`} alt="" />
 				<div className={styles.price}>{price} <span>₽</span></div>
 				<div className={styles.rate}>
-					<span>{rate}</span>
+					<span>{rating}</span>
 					<img src="/rate-star.svg" alt="Иконка рейтинга" />
 				</div>
 			</div>
 			<div className={styles['card-bottom']}>
-				<HTag tag='h2'>{title}</HTag>
+				<HTag tag='h2'>{name}</HTag>
 
 				<div className={styles.desc}>
-					{description}
+					{ingredients.join(', ')}
 				</div>
 			</div>
-		</div>
+		</Link>
 	);
 };
 

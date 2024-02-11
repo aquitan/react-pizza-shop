@@ -54,6 +54,9 @@
 	box-shadow: 0 6px 24px 0 rgba(254, 114, 76, 0.2);
 }
 
+.desc {
+	color: var(--dark-grey);
+}
 .img {
 	border-radius: 18px;
 }
@@ -64,4 +67,9 @@
 
 .card-bottom {
 	padding: 13px;
+}
+.buy {
+	position: absolute;
+	right: 14px;
+	top: 12px;
 }

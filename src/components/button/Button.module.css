@@ -29,7 +29,7 @@
 .small {
 	padding: 10px 25px;
 	height: 44px;
-	max-width: 141px;
+	max-width: fit-content;
 	text-transform: none;
 }
 
@@ -39,4 +39,10 @@
 	max-width: 117px;
 	text-transform: none;
 	justify-content: flex-start;
+}
+.round {
+	padding: 9px;
+	height: 34px;
+	width: 34px;
+	border-radius: 50%;
 }
