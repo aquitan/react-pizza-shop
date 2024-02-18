@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Menu from './pages/menu/Menu';
-import Cart from './pages/cart/Cart';
-import Layout from './layout/Layout';
+import { RouterProvider, createBrowserRouter, defer } from 'react-router-dom';
+import Layout from './layout/mainLayout/Layout';
 import Error from './pages/error/Error';
 import CardDetail from './pages/cardDetail/CardDetail';
 import { PREFIX } from './api/API';
 import axios from 'axios';
+import AuthLayout from './layout/authLayout/AuthLayout';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
+
+const Menu = lazy(() => import('./pages/menu/Menu'));
+const Cart = lazy(() => import('./pages/cart/Cart'));
 
 const router = createBrowserRouter([
 	{
@@ -17,21 +21,36 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <Menu />
+				element: <Suspense fallback={<>Загрузка...</>}><Menu /></Suspense>
 			},
 			{
 				path: '/cart',
-				element: <Cart />
+				element: <Suspense fallback={<>Загрузка...</>}><Cart /></Suspense>
 			},
 			{
 				path: '/product/:id',
 				element: <CardDetail />,
 				loader: async ({ params }) => {
-					const { data } = await axios.get(`${PREFIX}/products/${params.id}`);
-					return data;
+					return defer({
+						data: axios.get(`${PREFIX}/products/${params.id}`).then(data => data)
+					});
 				}
 			}
 
+		]
+	},
+	{
+		path: '/auth',
+		element: <AuthLayout />,
+		children: [
+			{
+				path: 'login',
+				element: <Login />
+			},
+			{
+				path: 'register',
+				element: <Register />
+			}
 		]
 	},
 	{

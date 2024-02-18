@@ -1,3 +1,31 @@
+.row {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	font-size: 16px;
+	padding-bottom: 20px;
+	justify-content: space-between;
+}
+
+.row:first-child {
+	border-bottom: 1px solid var(--separator);
+	margin-bottom: 20px;
+}
+
+.right {
+	width: 200px;
+}
+
+.composition {
+	font-size: 14px;
+	font-weight: bold;
+	color: var(--dark-grey);
+}
+
+.image {
+	border-radius: 15px;
+}
 .inner {
 	display: flex;
+	gap: 50px;
 }

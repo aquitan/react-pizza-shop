@@ -1,13 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import Sidebar from '../components/sidebar/Sidebar';
+import Sidebar from '../../components/sidebar/Sidebar';
 import styles from './Layout.module.css';
 
 const Layout = () => {
-	return(
+	return (
 		<div className={styles.layout}>
-			<Sidebar/>
+			<Sidebar />
 			<div className={styles.content}>
-				<Outlet/>
+				<Outlet />
 			</div>
 		</div>
 	);

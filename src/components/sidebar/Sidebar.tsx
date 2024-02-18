@@ -8,7 +8,7 @@ const Sidebar = () => {
 		<div className={styles.sidebar}>
 			<div>
 				<div className={styles.user}>
-					<img className={styles.avatar} src="/public/avatar.png" alt="Аватар пользователя" />
+					<img className={styles.avatar} src="/avatar.png" alt="Аватар пользователя" />
 					<div className={styles.name}>
 						Сергей
 					</div>
@@ -17,18 +17,18 @@ const Sidebar = () => {
 
 				<div className={styles.menu}>
 					<NavLink className={({ isActive }) => cx(styles['menu-item'], { [styles.active]: isActive })} to="/">
-						<img src="/public/menu-icon.svg" alt="Иконка меню" />
+						<img src="/menu-icon.svg" alt="Иконка меню" />
 						<span>Меню</span>
 					</NavLink>
 					<NavLink className={({ isActive }) => cx(styles['menu-item'], { [styles.active]: isActive })} to="/cart">
-						<img src="/public/cart-icon.svg" alt="Иконка корзины" />
+						<img src="/cart-icon.svg" alt="Иконка корзины" />
 						<span>Корзина</span>
 					</NavLink>
 				</div>
 			</div>
 
 			<Button appearance='exit'>
-				<img src="/public/switch-icon.svg" alt="" />
+				<img src="/switch-icon.svg" alt="" />
 				Выход
 			</Button>
 		</div>

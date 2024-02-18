@@ -3,6 +3,7 @@ import Button from '../button/Button';
 import HTag from '../hTag/HTag';
 import styles from './Card.module.css';
 import { CardProps } from './Card.props';
+import Rating from '../rating/Rating';
 
 const Card = ({ id, price, rating, image, name, ingredients }: CardProps) => {
 
@@ -17,8 +18,7 @@ const Card = ({ id, price, rating, image, name, ingredients }: CardProps) => {
 				<img className={styles.image} src={`${image}`} alt="" />
 				<div className={styles.price}>{price} <span>₽</span></div>
 				<div className={styles.rate}>
-					<span>{rating}</span>
-					<img src="/rate-star.svg" alt="Иконка рейтинга" />
+					<Rating rating={rating} />
 				</div>
 			</div>
 			<div className={styles['card-bottom']}>
