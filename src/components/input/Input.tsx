@@ -7,7 +7,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input({ name, ty
 	const cx = classNames.bind(styles);
 
 	return (
-		<input {...ref} name={name} id={name} type={type} className={cx(styles.input)} placeholder={placeholder} {...attrs} />
+		<input ref={ref} name={name} id={name} type={type} className={cx(styles.input)} placeholder={placeholder} {...attrs} />
 	);
 });
 

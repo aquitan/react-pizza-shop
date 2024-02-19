@@ -5,27 +5,36 @@ import Label from '../../components/label/Label';
 import Button from '../../components/button/Button';
 import styles from './Register.module.css';
 import Form from '../../components/form/Form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { RegisterFormProps } from './Register.props';
 
 const Register = () => {
+	const { register, handleSubmit } = useForm<RegisterFormProps>();
+
+
+	const onSubmit: SubmitHandler<RegisterFormProps> = (data) => {
+		console.log(data);
+	};
+
 	return (
 		<div className={styles.login}>
 			<HTag tag='h1'>Регистрация</HTag>
-			<Form>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<div className={styles['form-group']}>
 					<Label text='Ваш email'>
-						<Input placeholder='Email' />
+						<Input {...register('email')} placeholder='Email' />
 					</Label>
 				</div>
 
 				<div className={styles['form-group']}>
 					<Label text='Ваш пароль'>
-						<Input placeholder='Пароль' />
+						<Input {...register('password')} placeholder='Пароль' />
 					</Label>
 				</div>
 
 				<div className={styles['form-group']}>
 					<Label text='Ваше имя'>
-						<Input placeholder='Имя' />
+						<Input {...register('name')} placeholder='Имя' />
 					</Label>
 				</div>
 

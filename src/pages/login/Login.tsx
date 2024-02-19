@@ -5,38 +5,38 @@ import HTag from '../../components/hTag/HTag';
 import Input from '../../components/input/Input';
 import Label from '../../components/label/Label';
 import styles from './Login.module.css';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { LoginFormProps } from './Login.props';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginSchema } from './validation';
+
+
+
 
 const Login = () => {
-	const [data, setData] = useState({
-		email: '',
-		password: ''
+	const { register, handleSubmit, formState: { errors } } = useForm<LoginFormProps>({
+		resolver: yupResolver(loginSchema)
 	});
 
-	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
+	const onSubmit: SubmitHandler<LoginFormProps> = (data) => {
 		console.log('form', data);
-	};
-
-	const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setData({
-			...data, [e.target.name]: e.target.value
-		});
 	};
 
 	return (
 		<div className={styles.login}>
 			<HTag tag='h1'>Вход</HTag>
-			<Form onSubmit={onSubmit}>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<div className={styles['form-group']}>
 					<Label text='Ваш email'>
-						<Input name='email' value={data.email} onChange={onChange} placeholder='Email' />
+						<Input {...register('email')} name='email' placeholder='Email' />
+						{errors.email?.message}
 					</Label>
 				</div>
 
 				<div className={styles['form-group']}>
 					<Label text='Ваш пароль'>
-						<Input name='password' value={data.password} onChange={onChange} placeholder='Пароль' />
+						<Input {...register('password')} name='password' placeholder='Пароль' />
+						{errors.password?.message}
 					</Label>
 				</div>
 
