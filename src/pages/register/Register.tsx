@@ -7,9 +7,13 @@ import styles from './Register.module.css';
 import Form from '../../components/form/Form';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { RegisterFormProps } from './Register.props';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { registerSchema } from './validation';
 
 const Register = () => {
-	const { register, handleSubmit } = useForm<RegisterFormProps>();
+	const { register, handleSubmit, formState: { errors } } = useForm<RegisterFormProps>({
+		resolver: yupResolver(registerSchema)
+	});
 
 
 	const onSubmit: SubmitHandler<RegisterFormProps> = (data) => {
@@ -23,18 +27,21 @@ const Register = () => {
 				<div className={styles['form-group']}>
 					<Label text='Ваш email'>
 						<Input {...register('email')} placeholder='Email' />
+						{errors.email ? <div className={styles.error}>{errors.email?.message}</div> : null}
 					</Label>
 				</div>
 
 				<div className={styles['form-group']}>
 					<Label text='Ваш пароль'>
 						<Input {...register('password')} placeholder='Пароль' />
+						{errors.email ? <div className={styles.error}>{errors.email?.message}</div> : null}
 					</Label>
 				</div>
 
 				<div className={styles['form-group']}>
 					<Label text='Ваше имя'>
 						<Input {...register('name')} placeholder='Имя' />
+						{errors.name ? <div className={styles.error}>{errors.name?.message}</div> : null}
 					</Label>
 				</div>
 

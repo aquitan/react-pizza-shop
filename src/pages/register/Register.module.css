@@ -28,3 +28,9 @@
 .link:hover {
 	color: var(--primary-hover-orange);
 }
+.error {
+	color: var(--error-text);
+	font-size: 12px;
+	position: absolute;
+	bottom: -15px;
+}

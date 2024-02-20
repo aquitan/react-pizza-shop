@@ -29,14 +29,14 @@ const Login = () => {
 				<div className={styles['form-group']}>
 					<Label text='Ваш email'>
 						<Input {...register('email')} name='email' placeholder='Email' />
-						{errors.email?.message}
+						{errors.email ? <div className={styles.error}>{errors.email?.message}</div> : null}
 					</Label>
 				</div>
 
 				<div className={styles['form-group']}>
 					<Label text='Ваш пароль'>
 						<Input {...register('password')} name='password' placeholder='Пароль' />
-						{errors.password?.message}
+						{errors.password ? <div className={styles.error}>{errors.password?.message}</div> : null}
 					</Label>
 				</div>
 
