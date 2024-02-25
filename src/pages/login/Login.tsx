@@ -38,7 +38,6 @@ const Login = () => {
 
 	const sendLogin = async (data: LoginFormProps) => {
 		const res = await axios.post<LoginType>(`${PREFIX}/auth/login`, data);
-		localStorage.setItem('jwt', res.data.access_token);
 		dispatch(userActions.addJwt(res.data.access_token));
 		navigate('/');
 	};

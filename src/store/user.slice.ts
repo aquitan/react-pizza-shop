@@ -1,11 +1,14 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { loadState } from './storage';
+
+export const JWT_STATE = 'jwt';
 
 type UserState = {
 	jwt: string | null
 }
 
 const initialState: UserState = {
-	jwt: null
+	jwt: loadState(JWT_STATE) ?? null
 };
 
 export const userSlice = createSlice({
