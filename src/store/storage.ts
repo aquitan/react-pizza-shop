@@ -15,8 +15,8 @@ export const loadState = (key: string) => {
 	}
 };
 
-export function saveState<T>(state: T, key: string) {
+export const saveState = <T>(state: T, key: string) => {
 	const stringState = JSON.stringify(state);
 
 	localStorage.setItem(key, stringState);
-}
+};
