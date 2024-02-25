@@ -34,3 +34,10 @@
 	position: absolute;
 	bottom: -15px;
 }
+.submit-error {
+	background-color: #FFC529;
+	padding: 20px;
+	color: #fff;
+	border-radius: 10px;
+	margin-bottom: 20px;
+}

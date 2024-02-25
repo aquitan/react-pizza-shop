@@ -1,9 +1,16 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Sidebar.module.css';
 import Button from '../button/Button';
 import cx from 'classnames';
 
 const Sidebar = () => {
+	const navigate = useNavigate();
+
+	const logout = () => {
+		localStorage.removeItem('jwt');
+		navigate('/auth/login');
+	};
+
 	return(
 		<div className={styles.sidebar}>
 			<div>
@@ -27,7 +34,7 @@ const Sidebar = () => {
 				</div>
 			</div>
 
-			<Button appearance='exit'>
+			<Button appearance='exit' onClick={logout}>
 				<img src="/switch-icon.svg" alt="" />
 				Выход
 			</Button>

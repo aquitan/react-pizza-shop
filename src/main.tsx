@@ -10,6 +10,9 @@ import axios from 'axios';
 import AuthLayout from './layout/authLayout/AuthLayout';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import AuthRoutes from './helpers/AuthRoutes';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 const Menu = lazy(() => import('./pages/menu/Menu'));
 const Cart = lazy(() => import('./pages/cart/Cart'));
@@ -17,7 +20,7 @@ const Cart = lazy(() => import('./pages/cart/Cart'));
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Layout />,
+		element: <AuthRoutes><Layout /></AuthRoutes>,
 		children: [
 			{
 				path: '/',
@@ -62,6 +65,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<Provider store={store}>
+			<RouterProvider router={router} />
+		</Provider>
 	</React.StrictMode>
 );
