@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import HTag from '../../components/hTag/HTag';
 import Input from '../../components/input/Input';
 import Label from '../../components/label/Label';
@@ -9,19 +9,38 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { RegisterFormProps } from './Register.props';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerSchema } from './validation';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store/store';
+import { getRegister } from '../../store/user.slice';
+import { useEffect } from 'react';
 
 const Register = () => {
+	const dispatch = useDispatch<AppDispatch>();
+	const navigate = useNavigate();
+	const { jwt, loginErrorMessage } = useSelector((state: RootState) => state.user);
 	const { register, handleSubmit, formState: { errors } } = useForm<RegisterFormProps>({
 		resolver: yupResolver(registerSchema)
 	});
 
 
-	const onSubmit: SubmitHandler<RegisterFormProps> = (data) => {
+	useEffect(() => {
+		if (jwt) {
+			navigate('/');
+		}
+	}, [jwt, navigate]);
+
+	const onSubmit: SubmitHandler<RegisterFormProps> = async (data) => {
 		console.log(data);
+		await sendRegister(data);
+	};
+
+	const sendRegister = async (data: RegisterFormProps) => {
+		dispatch(getRegister({ name: data.name, email: data.email, password: data.password }));
 	};
 
 	return (
 		<div className={styles.login}>
+			{loginErrorMessage && <div className={styles['submit-error']}>{loginErrorMessage}</div>}
 			<HTag tag='h1'>Регистрация</HTag>
 			<Form onSubmit={handleSubmit(onSubmit)}>
 				<div className={styles['form-group']}>

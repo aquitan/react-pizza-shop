@@ -4,5 +4,5 @@ export type CardProps = {
 	image: string,
 	name: string,
 	ingredients: string[]
-	id: number | string
+	id: number
 }

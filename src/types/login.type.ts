@@ -1,3 +1,3 @@
-export type LoginType = {
+export type AuthType = {
 	access_token: string
 }
